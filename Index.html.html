@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<title>Lá chắn 5 bước - Exit Ticket</title>
+
+<style>
+:root{
+  --navy:#0b2a4a;
+  --blue:#0f6fbf;
+  --sky:#eaf6ff;
+  --red:#d72638;
+  --yellow:#ffd54a;
+  --green:#1d8f5a;
+  --white:#ffffff;
+  --text:#17324d;
+  --muted:#65788a;
+  --border:#cfe3f2;
+  --shadow:0 12px 30px rgba(11,42,74,.14);
+}
+
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  overflow-x:hidden;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  background:linear-gradient(180deg,#eaf6ff 0%,#f8fcff 100%);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,Helvetica,sans-serif;
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  width:100%;
+}
+
+body{
+  min-height:100vh;
+  min-height:100dvh;
+}
+
+.app{
+  max-width:880px;
+  margin:0 auto;
+  padding:calc(18px + env(safe-area-inset-top,0px)) 14px calc(30px + env(safe-area-inset-bottom,0px));
+  width:100%;
+}
+
+.hero{
+  background:linear-gradient(135deg,var(--navy),var(--blue));
+  color:#fff;
+  border-radius:24px;
+  padding:24px 20px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+
+.hero:after{
+  content:"🛡️";
+  position:absolute;
+  right:14px;
+  top:2px;
+  font-size:92px;
+  opacity:.12;
+}
+
+.eyebrow{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  color:#c9ebff;
+  text-align:center;
+}
+
+h1{
+  margin:6px 0 8px;
+  font-size:clamp(26px,7vw,44px);
+  line-height:1.1;
+  color:var(--yellow);
+  text-align:center;
+  word-break:break-word;
+}
+
+.subtitle{
+  margin:0 auto;
+  max-width:700px;
+  font-size:16px;
+  line-height:1.5;
+  color:#eef8ff;
+  text-align:center;
+}
+
+.author{
+  margin-top:12px;
+  font-size:13px;
+  color:#d7efff;
+  text-align:center;
+}
+
+.card{
+  margin-top:16px;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:20px;
+  box-shadow:var(--shadow);
+  width:100%;
+}
+
+.hidden{
+  display:none !important;
+}
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:8px;
+  margin-top:14px;
+  width:100%;
+}
+
+.step{
+  background:#f2f8fc;
+  border:1px solid #dcecf7;
+  border-radius:14px;
+  padding:10px 4px;
+  text-align:center;
+  font-size:11px;
+  font-weight:700;
+  color:var(--navy);
+  min-width:0;
+  overflow-wrap:break-word;
+}
+
+.step span{
+  display:block;
+  font-size:20px;
+  margin-bottom:4px;
+}
+
+.step.active{
+  background:#fff6ce;
+  border-color:#f2cf4a;
+}
+
+.progressWrap{
+  margin-top:14px;
+}
+
+.progressText{
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  font-weight:700;
+  color:var(--muted);
+  margin-bottom:6px;
+  gap:8px;
+}
+
+.progress{
+  height:10px;
+  background:#e7eff5;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.progress>div{
+  height:100%;
+  background:linear-gradient(90deg,var(--blue),#35a6e9);
+  width:0%;
+  transition:.3s;
+}
+
+.qtag{
+  display:inline-block;
+  background:#e9f4ff;
+  color:var(--blue);
+  font-weight:700;
+  padding:7px 10px;
+  border-radius:999px;
+  font-size:13px;
+}
+
+.question{
+  font-size:21px;
+  line-height:1.35;
+  margin:14px 0 6px;
+  color:var(--navy);
+  word-break:break-word;
+}
+
+.context{
+  font-size:16px;
+  line-height:1.55;
+  margin:0 0 16px;
+  color:#314d65;
+}
+
+.options{
+  display:grid;
+  gap:10px;
+  width:100%;
+}
+
+.option{
+  width:100%;
+  text-align:left;
+  border:2px solid #d9e8f3;
+  background:#fff;
+  border-radius:16px;
+  padding:15px 14px;
+  font-size:16px;
+  line-height:1.45;
+  color:var(--text);
+  cursor:pointer;
+  transition:.18s;
+  min-height:56px;
+  -webkit-appearance:none;
+  appearance:none;
+  touch-action:manipulation;
+  user-select:none;
+  -webkit-user-select:none;
+  font-family:inherit;
+}
+
+.option:hover{
+  border-color:#8fc7eb;
+  background:#f6fbff;
+}
+
+.option:active{
+  transform:scale(.995);
+}
+
+.option.correct{
+  border-color:#63bd8e;
+  background:#eaf8f0;
+}
+
+.option.wrong{
+  border-color:#e38b94;
+  background:#fff0f2;
+}
+
+.option:disabled{
+  cursor:default;
+  opacity:.95;
+}
+
+.feedback{
+  margin-top:14px;
+  border-radius:16px;
+  padding:14px 15px;
+  line-height:1.5;
+  font-size:15px;
+}
+
+.feedback.good{
+  background:#eaf8f0;
+  border:1px solid #9fd6b8;
+  color:#195b3b;
+}
+
+.feedback.bad{
+  background:#fff1f2;
+  border:1px solid #efb5bb;
+  color:#8f2530;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:16px;
+  justify-content:center;
+}
+
+button.primary,
+button.secondary{
+  border:0;
+  border-radius:14px;
+  padding:13px 18px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  -webkit-appearance:none;
+  appearance:none;
+  touch-action:manipulation;
+  font-family:inherit;
+}
+
+button.primary{
+  background:var(--red);
+  color:#fff;
+  min-width:160px;
+}
+
+button.secondary{
+  background:#e8f3fb;
+  color:var(--navy);
+}
+
+button.primary:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.introList{
+  margin:12px 0 0;
+  padding-left:20px;
+  line-height:1.65;
+}
+
+.notice{
+  background:#fff9dd;
+  border:1px solid #f0d66a;
+  border-radius:14px;
+  padding:12px 13px;
+  margin-top:14px;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.scoreBox{
+  text-align:center;
+  padding:6px 0 10px;
+}
+
+.score{
+  font-size:50px;
+  font-weight:800;
+  color:var(--red);
+  line-height:1;
+}
+
+.rank{
+  font-size:19px;
+  font-weight:800;
+  color:var(--navy);
+  margin-top:8px;
+}
+
+.summary{
+  display:grid;
+  gap:9px;
+  margin-top:16px;
+}
+
+.sumItem{
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px 13px;
+  background:#fbfdff;
+  font-size:14px;
+  line-height:1.45;
+}
+
+.sumItem b{
+  color:var(--navy);
+}
+
+.message{
+  margin-top:16px;
+  background:linear-gradient(135deg,#fff7cf,#fffdf4);
+  border:1px solid #f0d874;
+  border-radius:18px;
+  padding:16px;
+  text-align:center;
+  font-weight:800;
+  color:#5a4700;
+  line-height:1.5;
+}
+
+.footer{
+  text-align:center;
+  color:#6c7f90;
+  font-size:12px;
+  margin-top:18px;
+}
+
+#intro h2,
+#intro p{
+  text-align:center;
+}
+
+@media(max-width:620px){
+
+  .app{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .hero{
+    border-radius:18px;
+    padding:20px 16px;
+  }
+
+  .card{
+    border-radius:18px;
+    padding:16px;
+  }
+
+  .steps{
+    gap:5px;
+  }
+
+  .step{
+    font-size:10px;
+    padding:8px 2px;
+  }
+
+  .step span{
+    font-size:17px;
+  }
+
+  .question{
+    font-size:19px;
+  }
+
+  .option{
+    font-size:15px;
+    padding:13px 12px;
+  }
+}
+
+@media(max-width:380px){
+
+  h1{
+    font-size:26px;
+  }
+
+  .subtitle{
+    font-size:14px;
+  }
+
+  .step{
+    font-size:9px;
+    padding:7px 2px;
+  }
+
+  .step span{
+    font-size:15px;
+  }
+
+  .question{
+    font-size:18px;
+  }
+
+  .score{
+    font-size:42px;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  button.primary,
+  button.secondary{
+    width:100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<section class="hero">
+
+<div class="eyebrow">
+Học liệu hỗ trợ bài giảng
+</div>
+
+<h1>
+LÁ CHẮN 5 BƯỚC
+</h1>
+
+<p class="subtitle">
+Mini-app tương tác / Exit Ticket:
+kiểm tra khả năng nhận diện, từ chối và xử lý tình huống nguy cơ của học sinh THCS.
+</p>
+
+<div class="author">
+Tác giả: Nguyễn Tấn Hữu
+</div>
+
+</section>
+
+
+<section class="card" id="intro">
+
+<h2 style="margin-top:0;color:var(--navy)">
+Em đã sẵn sàng kích hoạt "Lá chắn"?
+</h2>
+
+<p>
+App gồm <b>5 tình huống ngắn</b>.
+Mỗi câu hãy chọn phương án an toàn nhất.
+</p>
+
+<ul class="introList">
+
+<li>
+Chọn đúng: app giải thích vì sao phương án an toàn.
+</li>
+
+<li>
+Chọn chưa phù hợp: app chỉ ra nguy cơ và giúp em suy nghĩ lại.
+</li>
+
+<li>
+Cuối bài: app tổng kết mức độ hoàn thành 5 bước.
+</li>
+
+</ul>
+
+<div class="steps">
+
+<div class="step">
+<span>🔎</span>
+Nhận diện
+</div>
+
+<div class="step">
+<span>✋</span>
+Từ chối
+</div>
+
+<div class="step">
+<span>🚪</span>
+Rời khỏi
+</div>
+
+<div class="step">
+<span>📣</span>
+Báo tin
+</div>
+
+<div class="step">
+<span>🤝</span>
+Hỗ trợ
+</div>
+
+</div>
+
+<div class="notice">
+<b>Lưu ý:</b>
+Không tự ý kiểm tra, cầm nắm hoặc xác định một vật/chất nghi vấn.
+Mục tiêu là lựa chọn hành vi an toàn.
+</div>
+
+<div class="actions">
+
+<button class="primary" id="startBtn">
+BẮT ĐẦU
+</button>
+
+</div>
+
+</section>
+
+
+<section class="card hidden" id="quiz">
+
+<div class="progressWrap">
+
+<div class="progressText">
+
+<span id="progressLabel">
+Tình huống 1/5
+</span>
+
+<span id="scoreLabel">
+Điểm: 0
+</span>
+
+</div>
+
+<div class="progress">
+<div id="bar"></div>
+</div>
+
+</div>
+
+
+<div class="steps" id="miniSteps"></div>
+
+
+<div style="margin-top:18px">
+
+<span class="qtag" id="qtag"></span>
+
+<h2 class="question" id="question"></h2>
+
+<p class="context" id="context"></p>
+
+<div class="options" id="options"></div>
+
+<div id="feedback" class="feedback hidden"></div>
+
+<div class="actions">
+
+<button class="primary" id="nextBtn" disabled>
+TIẾP TỤC
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card hidden" id="result">
+
+<div class="scoreBox">
+
+<div class="eyebrow" style="color:var(--blue)">
+KẾT QUẢ EXIT TICKET
+</div>
+
+<div class="score" id="finalScore">
+0/5
+</div>
+
+<div class="rank" id="rank"></div>
+
+</div>
+
+<div class="summary" id="summary"></div>
+
+
+<div class="message">
+
+NHẬN DIỆN ĐÚNG
+– TỪ CHỐI RÕ
+– RỜI KHỎI NHANH
+– BÁO TIN KỊP THỜI
+– HỖ TRỢ AN TOÀN
+
+</div>
+
+<div class="actions">
+
+<button class="primary" id="restartBtn">
+LÀM LẠI
+</button>
+
+</div>
+
+</section>
+
+
+<div class="footer">
+
+Bài giảng "Lá chắn 5 bước"
+– Học liệu hỗ trợ giáo dục phòng, chống ma túy cho học sinh THCS.
+
+</div>
+
+</div>
+
+
+<script>
+
+const items = [
+
+{
+step:"Nhận diện",
+icon:"🔎",
+tag:"TÌNH HUỐNG 1",
+
+question:
+"Một người quen đưa cho em một sản phẩm không rõ nguồn gốc và nói: “Thử đi, có gì đâu!”. Em nên làm gì?",
+
+context:
+"Hãy chọn phương án an toàn nhất.",
+
+options:[
+"Thử vì người quen nói là an toàn.",
+"Cầm về rồi tìm hiểu sau.",
+"Từ chối, rời khỏi và báo cho người lớn đáng tin cậy."
+],
+
+correct:2,
+
+good:
+"Đúng. Em đã nhận diện được dấu hiệu bất thường và chọn hành vi an toàn: không thử, không giữ, chủ động rời khỏi và tìm người hỗ trợ.",
+
+bad:
+"Chưa phù hợp. Khi sản phẩm không rõ nguồn gốc và có hành vi thúc giục, em không nên thử hoặc mang theo. Hãy ưu tiên an toàn."
+},
+
+
+{
+step:"Từ chối",
+icon:"✋",
+tag:"TÌNH HUỐNG 2",
+
+question:
+"Bạn nói: “Chỉ thử một lần thôi, sợ gì!”. Cách đáp lại nào phù hợp nhất?",
+
+context:
+"Mục tiêu là từ chối rõ ràng, ngắn gọn và không tranh luận kéo dài.",
+
+options:[
+"“Không. Mình không sử dụng hoặc nhận những thứ không rõ nguồn gốc.”",
+"“Để mình suy nghĩ đã, lát nữa trả lời.”",
+"“Bạn thử trước đi rồi mình xem.”"
+],
+
+correct:0,
+
+good:
+"Đúng. Câu từ chối ngắn, rõ và dứt khoát giúp giảm nguy cơ bị kéo vào tranh luận hoặc tiếp tục chịu áp lực.",
+
+bad:
+"Chưa phù hợp. Câu trả lời do dự hoặc chuyển trách nhiệm sang người khác có thể kéo dài tình huống. Hãy nói “không” rõ ràng."
+},
+
+
+{
+step:"Rời khỏi",
+icon:"🚪",
+tag:"TÌNH HUỐNG 3",
+
+question:
+"Sau khi em đã từ chối, nhóm bạn vẫn tiếp tục ép buộc và chế giễu. Em nên làm gì tiếp theo?",
+
+context:
+"Hãy ưu tiên hành vi giúp em thoát khỏi áp lực.",
+
+options:[
+"Ở lại tranh luận cho đến khi mọi người đồng ý với mình.",
+"Rời khỏi nhóm/khu vực đó và tìm nơi an toàn.",
+"Thử một lần để chứng minh mình không sợ."
+],
+
+correct:1,
+
+good:
+"Đúng. Khi áp lực vẫn tiếp diễn, rời khỏi tình huống là lựa chọn an toàn. Không cần chứng minh bản lĩnh bằng cách đặt mình vào nguy cơ.",
+
+bad:
+"Chưa phù hợp. Ở lại tranh cãi hoặc thử để “chứng minh” đều làm tăng nguy cơ. Hãy chủ động rời khỏi."
+},
+
+
+{
+step:"Báo tin",
+icon:"📣",
+tag:"TÌNH HUỐNG 4",
+
+question:
+"Em phát hiện một vật/chất không rõ nguồn gốc trong khu vực trường học. Hành động nào phù hợp nhất?",
+
+context:
+"Không tự ý kiểm tra hoặc tiếp xúc.",
+
+options:[
+"Cầm lên xem kỹ rồi mới báo.",
+"Chụp ảnh đăng lên mạng để hỏi mọi người.",
+"Không tự ý tiếp xúc và báo ngay cho giáo viên/người có trách nhiệm."
+],
+
+correct:2,
+
+good:
+"Đúng. Em không cần tự xác định vật đó là gì. Việc cần làm là tránh tiếp xúc và báo cho người có trách nhiệm.",
+
+bad:
+"Chưa phù hợp. Tự cầm nắm, kiểm tra hoặc đăng lên mạng có thể tạo thêm rủi ro. Hãy tránh tiếp xúc và báo tin."
+},
+
+
+{
+step:"Hỗ trợ",
+icon:"🤝",
+tag:"TÌNH HUỐNG 5",
+
+question:
+"Một người bạn nói: “Mình đã lỡ liên quan đến một thứ không nên dùng. Đừng nói với ai nhé.” Em nên làm gì?",
+
+context:
+"Mục tiêu là hỗ trợ bạn nhưng không che giấu nguy hiểm.",
+
+options:[
+"Hứa giữ bí mật hoàn toàn để bạn yên tâm.",
+"Bình tĩnh lắng nghe, không phán xét và khuyến khích bạn tìm người lớn đáng tin cậy; báo người có trách nhiệm khi cần.",
+"Kể ngay cho nhiều bạn khác để mọi người cùng biết."
+],
+
+correct:1,
+
+good:
+"Đúng. Hỗ trợ an toàn là lắng nghe, không kỳ thị và đưa bạn đến nguồn trợ giúp phù hợp; không hứa giữ bí mật nếu sự việc có thể gây nguy hiểm.",
+
+bad:
+"Chưa phù hợp. Che giấu hoặc lan truyền câu chuyện đều không phải cách hỗ trợ an toàn. Hãy tìm người lớn đáng tin cậy hoặc người có trách nhiệm."
+}
+
+];
+
+
+let index = 0;
+let score = 0;
+let locked = false;
+let answers = [];
+
+
+const intro =
+document.getElementById("intro");
+
+const quiz =
+document.getElementById("quiz");
+
+const result =
+document.getElementById("result");
+
+const startBtn =
+document.getElementById("startBtn");
+
+const nextBtn =
+document.getElementById("nextBtn");
+
+const restartBtn =
+document.getElementById("restartBtn");
+
+
+startBtn.addEventListener("click", () => {
+
+intro.classList.add("hidden");
+
+quiz.classList.remove("hidden");
+
+renderQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+});
+
+
+function renderSteps(){
+
+const wrap =
+document.getElementById("miniSteps");
+
+wrap.innerHTML =
+items.map((it,i)=>`
+
+<div class="step ${i===index?'active':''}">
+
+<span>${it.icon}</span>
+
+${it.step}
+
+</div>
+
+`).join("");
+
+}
+
+
+function renderQuestion(){
+
+locked = false;
+
+nextBtn.disabled = true;
+
+const item =
+items[index];
+
+
+document.getElementById("progressLabel")
+.textContent =
+`Tình huống ${index+1}/${items.length}`;
+
+
+document.getElementById("scoreLabel")
+.textContent =
+`Điểm: ${score}`;
+
+
+document.getElementById("bar")
+.style.width =
+`${(index/items.length)*100}%`;
+
+
+document.getElementById("qtag")
+.textContent =
+item.tag;
+
+
+document.getElementById("question")
+.textContent =
+item.question;
+
+
+document.getElementById("context")
+.textContent =
+item.context;
+
+
+renderSteps();
+
+
+const feedback =
+document.getElementById("feedback");
+
+feedback.className =
+"feedback hidden";
+
+feedback.textContent =
+"";
+
+
+const options =
+document.getElementById("options");
+
+options.innerHTML =
+"";
+
+
+item.options.forEach((text,i)=>{
+
+const btn =
+document.createElement("button");
+
+btn.className =
+"option";
+
+btn.textContent =
+`${String.fromCharCode(65+i)}. ${text}`;
+
+
+btn.addEventListener(
+"click",
+()=>choose(i,btn)
+);
+
+
+options.appendChild(btn);
+
+});
+
+}
+
+
+function choose(choice, btn){
+
+if(locked) return;
+
+locked = true;
+
+
+const item =
+items[index];
+
+
+const isCorrect =
+choice === item.correct;
+
+
+const buttons =
+[...document.querySelectorAll(".option")];
+
+
+buttons.forEach(
+b=>b.disabled=true
+);
+
+
+btn.classList.add(
+isCorrect
+? "correct"
+: "wrong"
+);
+
+
+if(!isCorrect){
+
+buttons[item.correct]
+.classList.add("correct");
+
+}
+
+
+const feedback =
+document.getElementById("feedback");
+
+
+feedback.className =
+`feedback ${isCorrect ? "good" : "bad"}`;
+
+
+feedback.innerHTML =
+`<b>
+${isCorrect
+? "✓ Lựa chọn an toàn."
+: "⚠ Cần suy nghĩ lại."}
+</b>
+<br>
+${isCorrect ? item.good : item.bad}`;
+
+
+if(isCorrect){
+
+score++;
+
+}
+
+
+answers.push({
+
+step:item.step,
+
+correct:isCorrect
+
+});
+
+
+document.getElementById("scoreLabel")
+.textContent =
+`Điểm: ${score}`;
+
+
+nextBtn.disabled =
+false;
+
+}
+
+
+nextBtn.addEventListener(
+"click",
+()=>{
+
+if(index < items.length-1){
+
+index++;
+
+renderQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+else{
+
+showResult();
+
+}
+
+});
+
+
+function showResult(){
+
+quiz.classList.add("hidden");
+
+result.classList.remove("hidden");
+
+
+document.getElementById("finalScore")
+.textContent =
+`${score}/${items.length}`;
+
+
+let rank = "";
+
+
+if(score===5){
+
+rank =
+"Đã kích hoạt đầy đủ Lá chắn 5 bước";
+
+}
+else if(score>=4){
+
+rank =
+"Nắm khá chắc kỹ năng an toàn";
+
+}
+else if(score>=3){
+
+rank =
+"Đã có nền tảng, cần luyện thêm";
+
+}
+else{
+
+rank =
+"Cần ôn lại Lá chắn 5 bước";
+
+}
+
+
+document.getElementById("rank")
+.textContent =
+rank;
+
+
+document.getElementById("summary")
+.innerHTML =
+answers.map((a,i)=>`
+
+<div class="sumItem">
+
+<b>
+${items[i].icon}
+${a.step}
+</b>
+
+—
+
+${a.correct
+? "✓ Đạt"
+: "△ Cần luyện thêm"}
+
+</div>
+
+`).join("");
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+restartBtn.addEventListener(
+"click",
+()=>{
+
+index = 0;
+score = 0;
+locked = false;
+answers = [];
+
+
+result.classList.add("hidden");
+
+intro.classList.remove("hidden");
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+});
+
+</script>
+
+</body>
+</html>
